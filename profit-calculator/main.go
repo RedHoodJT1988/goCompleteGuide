@@ -10,9 +10,9 @@ func main() {
 	ebt, profit, ratio := calculateFinancials(revenue, expenses, taxRate)
 
 	// Output the results
-	fmt.Println("Earnings Before Tax (EBT):", ebt)
-	fmt.Println("Profit After Tax:", profit)
-	fmt.Println("EBT to Profit Ratio:", ratio)
+	fmt.Printf("Earnings Before Tax (EBT): %.2f\n", ebt)
+	fmt.Printf("Profit After Tax: %.2f\n", profit)
+	fmt.Printf("EBT to Profit Ratio: %.2f\n", ratio)
 }
 
 func calculateFinancials(revenue, expenses, taxRate float64) (float64, float64, float64) {
