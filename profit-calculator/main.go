@@ -3,27 +3,28 @@ package main
 import "fmt"
 
 func main() {
-	var revenue float64
-	var expenses float64
-	var taxRate float64
+	revenue := getUserInput("Revenue: ")
+	expenses := getUserInput("Expenses: ")
+	taxRate := getUserInput("Tax Rate: ")
 
-	// Get user input
-	println("Enter Revenue:")
-	fmt.Scanln(&revenue)
+	ebt, profit, ratio := calculateFinancials(revenue, expenses, taxRate)
 
-	println("Enter Expenses:")
-	fmt.Scanln(&expenses)
+	// Output the results
+	fmt.Println("Earnings Before Tax (EBT):", ebt)
+	fmt.Println("Profit After Tax:", profit)
+	fmt.Println("EBT to Profit Ratio:", ratio)
+}
 
-	println("Enter Tax Rate (as a decimal):")
-	fmt.Scanln(&taxRate)
-
-	// Calculate profit before tax
+func calculateFinancials(revenue, expenses, taxRate float64) (float64, float64, float64) {
 	ebt := revenue - expenses
 	profit := ebt * (1 - taxRate/100)
-    ratio := ebt / profit
+	ratio := ebt / profit
+	return ebt, profit, ratio
+}
 
-    // Output the results
-    fmt.Println(ebt)
-    fmt.Println(profit)
-    fmt.Println(ratio)
+func getUserInput(infoText string) float64 {
+	var userInput float64
+	fmt.Print(infoText)
+	fmt.Scan(&userInput)
+	return userInput
 }
